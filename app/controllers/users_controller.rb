@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      log_in @user
+      session[:user_id] = @user.id
       flash[:success] = "Welcome to Slack Overflow"
       redirect_to user_path(@user)
     else
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   private
