@@ -42,6 +42,7 @@ class QuestionsController < ApplicationController
     else
       flash[:error] = "Something went wrong."
       redirect_to "/questions/#{question.id}"
+    end
   end
 
   private
