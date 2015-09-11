@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Question do
   it "is valid with a title, body, and author_id" do
