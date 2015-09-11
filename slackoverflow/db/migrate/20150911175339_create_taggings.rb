@@ -1,6 +1,6 @@
 class CreateTaggings < ActiveRecord::Migration
   def change
-    create_table :question_tags do |t|
+    create_table :taggings do |t|
       t.integer :question_id, null: false
       t.integer :tag_id, null: false
       t.timestamps, null: false
