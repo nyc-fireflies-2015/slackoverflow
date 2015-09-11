@@ -17,18 +17,16 @@ ActiveRecord::Schema.define(version: 20150911175339) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string   "body",                              null: false
-    t.integer  "commenter_id",                      null: false
-    t.integer  "question_id",                       null: false
-    t.integer  "parent_comment_id"
-    t.boolean  "is_answer",         default: false
+    t.string   "body",                             null: false
+    t.integer  "commenter_id",                     null: false
+    t.boolean  "is_answer",        default: false
     t.string   "commentable_type"
     t.integer  "commentable_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.integer  "author_id",  null: false
@@ -67,6 +65,6 @@ ActiveRecord::Schema.define(version: 20150911175339) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "votes", ["voteable_id"], name: "index_votes_on_voteable_id", using: :btree
+  add_index "votes", ["voteable_id", "voteable_type"], name: "index_votes_on_voteable_id_and_voteable_type", using: :btree
 
 end
