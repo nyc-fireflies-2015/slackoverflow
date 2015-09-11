@@ -8,8 +8,14 @@ describe Comment do
   end
 
   it 'should be invalid without a body' do
-    comment = Comment.create(commenter_id: 5)
+    comment = Comment.new(body: nil,commenter_id: 5)
     comment.valid?
-    expect(comment).to be_valid
+    expect(comment.errors[:body]).not_to include("can't be blank")
+  end
+
+  it 'should be invalid without a commenter' do
+    comment = Comment.new(body: "text",commenter_id: nil)
+    comment.valid?
+    expect(comment.errors[:commenter_id]).not_to include("can't be blank")
   end
 end
