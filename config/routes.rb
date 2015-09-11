@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'questons#index'
+  root 'questions#index'
 
   get 'login' => 'sessions#new'
   get 'signup' => 'users#new'
