@@ -1,0 +1,19 @@
+<div id="question_title">
+  <h3><%= @question.title %></h3>
+</div>
+<div id="question_body">
+  <p><%= @question.body %></p>
+</div>
+<div>
+  Posted by <%= link_to @question.author.username, user_path(@question.author) %>
+</div>
+<div id="new_comment">
+  <%= link_to 'add comment', new_comment_path(@question) %>
+</div>
+<hr>
+<div id="comments_stream">
+  <% @comments.each do |comment| %>
+    <p><%=comment.body%></p>
+    <p>posted by <%=comment.commenter.username%></p>
+  <% end %>
+</div>
