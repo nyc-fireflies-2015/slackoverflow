@@ -1,4 +1,23 @@
-<h2><%=@question.title%></h2>
-<h4> Asked by: <%= link_to @question.author.username %>
-
-<p><%=@question.body%></p>
+<div id="question_title">
+  <h3><%= @question.title %></h3>
+</div>
+<div id="question_body">
+  <p><%= @question.body %></p>
+</div>
+<div>
+  Posted by <%= link_to @question.author.username, user_path(@question.author) %>
+</div>
+<div id="new_comment">
+  <%= link_to 'add comment', new_comment_path(@question) %>
+</div>
+<hr>
+<div id="comments_stream">
+  <% @comments.each do |comment| %>
+    <p><%=comment.body%></p>
+    <p>posted by <%= link_to comment.commenter.username, user_path(comment.commenter) %></p>
+  <% end %>
+  <div id="new_comment">
+    <%= link_to 'add comment', new_comment_path(@comment) %>
+  </div>
+</div>
+>>>>>>> Add link to commenter show page
