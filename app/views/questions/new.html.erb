@@ -1,9 +1,22 @@
+
+
+
 <%= form_for @question do |q| %>
-  <%= q.label :title %>:
-  <%= q.text_field :title %><br />
 
-  <%= q.label :body %>:
-  <%= q.text_area :body %><br />
-
+  <%= q.label :title %>
+  <%= q.text_field :title %>
+  <br>
+  <%= q.label :body %>
+  <%= q.text_area :body %>
   <%= q.submit %>
+
 <% end %>
+
+<br>
+<div>
+  <% if @question.errors.any? %>
+      <% @question.errors.full_messages.each do |msg| %>
+        <%= msg %>
+      <% end %>
+  <% end %>
+</div>

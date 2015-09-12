@@ -12,9 +12,9 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = User.find(session[:user_id]).questions.build(question_params)
-    if question.save
-      redirect_to question_path(question)
+    @question = User.find(session[:user_id]).questions.build(question_params)
+    if @question.save
+      redirect_to question_path(@question)
     else
       flash[:error] = "Something went wrong. Perhaps you left a field empty?"
       render "new"
