@@ -2,6 +2,10 @@ FactoryGirl.define do
   factory :user do
     username Faker::Internet.user_name
     password "1234"
+
+    factory :invalid_user do
+      username nil
+    end
   end
 
   factory :question do
