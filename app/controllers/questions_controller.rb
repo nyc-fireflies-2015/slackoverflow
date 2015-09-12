@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @questions = Question.all || []
   end
 
   def show
@@ -14,10 +14,10 @@ class QuestionsController < ApplicationController
   def create
     question = User.find_by(session[:user_id]).questions.build(question_params)
     if question.save
-      redirect_to "/questions/#{question.id}"
+      redirect_to question_path(question)
     else
       flash[:error] = "Something went wrong. Perhaps you left a field empty?"
-      redirect_to "/questions/new"
+      render "new"
     end
   end
 
@@ -28,10 +28,10 @@ class QuestionsController < ApplicationController
   def update
     question = Question.find(params[:id])
     if question.update_attributes(question_params)
-      redirect_to "/questions/#{question.id}"
+      redirect_to question_path(question)
     else
       flash[:error] = "Something went wrong. Perhaps you left a field empty?"
-      redirect_to "/questions/#{question.id}/edit"
+      render "edit"
     end
   end
 
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
       redirect_to "/"
     else
       flash[:error] = "Something went wrong."
-      redirect_to "/questions/#{question.id}"
+      redirect_to question_path(question)
     end
   end
 
