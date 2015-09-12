@@ -1,6 +1,6 @@
 <p>
   <strong>Sign Up</strong>
-  <%= form_for :user, url: "/signup" do |f| %>
+  <%= form_for @user do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %><br/>
     <%= f.label :password %>
