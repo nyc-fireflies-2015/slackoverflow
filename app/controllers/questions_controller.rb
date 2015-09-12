@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = User.find_by(session[:user_id]).questions.build(question_params)
+    question = User.find(session[:user_id]).questions.build(question_params)
     if question.save
       redirect_to question_path(question)
     else
