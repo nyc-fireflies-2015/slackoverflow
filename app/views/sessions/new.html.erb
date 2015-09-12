@@ -1,10 +1,10 @@
 <p>
-  <strong>Sign Up</strong>
-  <%= form_for :user, url: "/signup" do |f| %>
+  <strong>Login</strong>
+  <%= form_for :session, url: "/login" do |f| %>
     <%= f.label :username %>
     <%= f.text_field :username %><br/>
     <%= f.label :password %>
     <%= f.password_field :password %><br/>
-    <%= submit_tag "Signup" %>
+    <%= f.submit_tag "Login" %>
   <% end %>
 </p>
