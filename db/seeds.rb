@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+users = []
+
+50.times{users << User.build(username:Faker::Internet.user_name, password: "test")}
+
+users.each{|u| u.questions.create(title:Faker::Company.catch_phrase, body: Faker::Lorem.paragraphs)}
