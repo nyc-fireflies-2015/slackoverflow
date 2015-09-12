@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   def new
+    binding.pry
     @comment = Comment.new
   end
 
