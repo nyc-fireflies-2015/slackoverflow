@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 describe User do
+
+
   context "validations" do
 
     it "validates presence of username and password" do
-      user = User.create(username: "john", password: "john")
+      user = FactoryGirl.build :user
       expect(user).to be_valid
     end
 
@@ -19,10 +21,11 @@ describe User do
       expect(user).to be_invalid
     end
 
-    it "doesn't allow a username larger than 12 characters" do
-      user = User.create(username: "johnnyappleseed", password: "john")
-      expect(user).to be_invalid
-    end
 
+    it "doesn't allow username to be blank" do
+      user = FactoryGirl.build :invalid_user
+      user.valid?
+      expect(user.errors[:username]).to include("can't be blank")
+    end
   end
 end
