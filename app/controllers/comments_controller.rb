@@ -1,10 +1,17 @@
 class CommentsController < ApplicationController
 
   def new
-    @comment = Comment.new
+    @comment = Comment.new(commentable_id: params[:commentable][:commentable_id], commentable_type: params[:commentable][:commentable_type])
   end
 
   def create
+    comment = Comment.new(comments_params)
+    if comment.save
+      redirect_to root_path
+    else
+      error_message = "ERROR: your comment wasn't saved"
+      render error_message
+    end
   end
 
   def show
