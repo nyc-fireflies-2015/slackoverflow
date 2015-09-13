@@ -6,8 +6,8 @@ $( document ).ready(function() {
       url: "/questions/" + clickTarget.name[0] + "/vote",
       method: "post",
       data: {vote: {
-        value: clickTarget.value,
-        voteable_type: "question",
+        value: 1,
+        voteable_type: "Question",
         voteable_id: clickTarget.name[0],
         voter_id: clickTarget.name[3]
         }
@@ -15,6 +15,7 @@ $( document ).ready(function() {
     }).done(function(response) {
       console.log("yay, here's the response", response)
     }).fail(function(err) {
+      debugger
       console.log(':(', err)
     })
 
