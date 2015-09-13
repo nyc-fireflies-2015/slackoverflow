@@ -2,7 +2,7 @@
 	<h3>All Questions</h3>
 	<div>---------------------------------------------------</div>
 	<div id="questions-list">
-		<ul>
+		<!-- <ul> -->
 			<% @questions.each do |question| %>
 				<li>
 					<div class="question-summary">
@@ -16,10 +16,9 @@
 							<div class="tag-list">Tags: <%= question.all_tags %></div>
 							<div class="author">asked by <%= question.author.username %> on <%= question.created_at.strftime('%c') %></div>
 						</div>
-						<div>---------------------------------------------------</div>
 					</div>
 				</li>
 			<% end %>
-		</ul>
+		<!-- </ul> -->
 	</div>	
 </div>
