@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
+
   def index
     @questions = Question.all.order(id: :desc) || []
   end

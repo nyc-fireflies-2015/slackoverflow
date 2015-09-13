@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_login
 
   def new
     @comment = Comment.new(commentable_id: params[:commentable][:commentable_id], commentable_type: params[:commentable][:commentable_type])

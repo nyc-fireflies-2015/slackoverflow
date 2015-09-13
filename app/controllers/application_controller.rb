@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
     render :file => "public/403" unless authorized?
   end
 
+  def logged_in?
+    !!current_user
+  end
+
+  def require_login
+    render :file => "public/402" unless logged_in?
+  end
+
 end
