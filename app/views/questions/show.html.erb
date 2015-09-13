@@ -16,9 +16,8 @@
     <p><%=comment.body%></p>
     <p>posted by <%= link_to comment.commenter.username, user_path(comment.commenter) %></p>
   <div id="new_comment">
-    <%= link_to 'add comment', new_comment_comment_path(comment, comentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
+    <%= link_to 'add comment', new_comment_comment_path(comment, commentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
   </div>
   <% end %>
 
 </div
-
