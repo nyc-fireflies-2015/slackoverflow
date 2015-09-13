@@ -6,22 +6,11 @@
   <p><%= @question.body %></p>
 </div>
 
-<%= form_for @upvote do %>
-  <%= hidden_field_tag(:voter_id, current_user.id) %>
-  <%= hidden_field_tag(:voteable_type, "Question") %>
-  <%= hidden_field_tag(:voteable_id, @question.id) %>
-  <%= hidden_field_tag(:value,"1") %>
-  <%= submit_tag("Up") %>
-<% end %>
 
-<%= form_for @downvote do %>
-  <%= hidden_field_tag(:voter_id, current_user.id) %>
-  <%= hidden_field_tag(:voteable_type, "Question") %>
-  <%= hidden_field_tag(:voteable_id, @question.id) %>
-  <%= hidden_field_tag(:value,"-1") %>
-  <%= submit_tag("Down") %>
+<% if logged_in? %>
+<%= render partial: 'votes/question_upvote' %>
+<%= render partial: 'votes/question_downvote' %>
 <% end %>
-
 <%= @question.vote_total %>
 
 
