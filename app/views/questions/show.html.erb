@@ -3,8 +3,27 @@
 </div>
 
 <div id="question_body">
-  <p><input class="upvote-question" type='button' name='<%= @question.id %>, <%= current_user.id %>' value="Upvote" /><%= render "vote", locals: { question: @question } %> <%= @question.body %></p>
+  <p><%= @question.body %></p>
 </div>
+
+<%= form_for @upvote do %>
+  <%= hidden_field_tag(:voter_id, current_user.id) %>
+  <%= hidden_field_tag(:voteable_type, "Question") %>
+  <%= hidden_field_tag(:voteable_id, @question.id) %>
+  <%= hidden_field_tag(:value,"1") %>
+  <%= submit_tag("Up") %>
+<% end %>
+
+<%= form_for @downvote do %>
+  <%= hidden_field_tag(:voter_id, current_user.id) %>
+  <%= hidden_field_tag(:voteable_type, "Question") %>
+  <%= hidden_field_tag(:voteable_id, @question.id) %>
+  <%= hidden_field_tag(:value,"-1") %>
+  <%= submit_tag("Down") %>
+<% end %>
+
+<%= @question.vote_total %>
+
 
 <div>
   Posted by <%= link_to @question.author.username, user_path(@question.author) %>

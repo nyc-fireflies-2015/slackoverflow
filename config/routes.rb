@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments, only: [:new,:create]
   end
-  # resources :votes, only: [:new, :create]
+
+  resources :votes, only: [:create]
   post 'questions/:id/vote' => 'votes#create'
   resources :tags, only: [:new, :create]
 
