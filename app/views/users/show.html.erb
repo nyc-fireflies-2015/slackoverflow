@@ -4,7 +4,7 @@
 		<h3>Your Questions (<%= @user.questions.count %>)</h3>
 		<div id="user-questions-list">
 			<% @user.questions.each do |question| %>
-				<li><%= link_to question.title, question_path(question) %></li>
+				<li><%= question.votes.count %> | <%= link_to question.title, question_path(question) %></li>
 			<% end %>
 		</div>
 	</div>
@@ -14,7 +14,7 @@
 		<div id="user-answers-list">
 			<% @user.comments.each do |comment| %>
 				<% if comment.is_answer == true %>
-					<li><%= link_to comment.body, question_path(comment.commentable) %></li>
+					<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(comment.commentable) %></li>
 				<% end %>
 			<% end %>
 		</div>
@@ -25,9 +25,9 @@
 		<div id="user-comments-list">
 			<% @user.comments.each do |comment| %>
 				<% if comment.commentable_type == "Comment" %>
-					<li><%= link_to comment.body, question_path(Comment.find(comment.commentable).commentable) %></li>
+					<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(Comment.find(comment.commentable).commentable) %></li>
 				<%else%>
-					<li><%= link_to comment.body, question_path(comment.commentable) %></li>
+					<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(comment.commentable) %></li>
 				<%end%>
 			<% end %>
 		</div>
