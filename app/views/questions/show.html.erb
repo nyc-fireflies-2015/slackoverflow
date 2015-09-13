@@ -11,7 +11,9 @@
 </div>
 
 <div id="new_comment">
+  <% if current_user %>
   <%= link_to 'add comment', new_question_comment_path(@question, commentable: {commentable_type: @question.class.to_s, commentable_id: @question.id}) %>
+  <% end %>
 </div>
 
 <hr>
@@ -20,7 +22,7 @@
   <% @comments.each do |comment| %>
     <p><%=comment.body%></p>
     <p>posted by <%= link_to comment.commenter.username, user_path(comment.commenter) %></p>
-    
+
     <ul>
       <%comment.comments.each do |sub_comment|%>
         <li><%=sub_comment.body%> posted by <%= link_to sub_comment.commenter.username, user_path(sub_comment.commenter) %></li>
@@ -28,7 +30,9 @@
     </ul>
 
     <div id="new_comment">
+      <% if current_user %>
       <%= link_to 'add comment', new_comment_comment_path(comment, commentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
+      <% end %>
     </div>
 
     <hr>
