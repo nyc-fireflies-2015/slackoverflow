@@ -11,9 +11,7 @@
 </div>
 
 <div id="new_comment">
-  <% if current_user %>
   <%= link_to 'add comment', new_question_comment_path(@question, commentable: {commentable_type: @question.class.to_s, commentable_id: @question.id}) %>
-  <% end %>
 </div>
 
 <hr>
