@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all || []
+    @questions = Question.all.order(id: :desc) || []
   end
 
   def show
