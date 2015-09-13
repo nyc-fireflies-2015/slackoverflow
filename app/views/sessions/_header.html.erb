@@ -1,4 +1,4 @@
-<%= link_to 'Stack Overflow', root_path %>
+<%= link_to 'Slack Overflow', root_path %>
 <% if current_user %>
   <%= link_to 'logout', logout_path %>
   <%= link_to 'profile', user_path(current_user) %>
@@ -6,3 +6,4 @@
   <%= link_to 'signup', signup_path %>
   <%= link_to 'login', login_path %>
 <% end %>
+<%= link_to "Ask a question", question_path(:new) %>
