@@ -1,7 +1,3 @@
-.container {
-	padding: 5em 10em 10em 10em;
-}
-
 #questions-list li {
 	list-style: none;
 }
@@ -16,21 +12,25 @@
 .stats-container {
 	display: block;
 	width: 60px;
+	height: 120px;
 	float: left;
 	padding-right: 20px;
 	font-size: 16px;
 }
 
 .vote-box {
-	height: 60px;
+	display: block;
+	height: 40px;
 	text-align: center;
+	padding: 8px 1px 1px 1px;
 }
 
 .answer-box {
+	display: block;
 	background-color: green;
-	height: 60px;
+	height: 40px;
 	text-align: center;
-	vertical-align: middle;
+	padding: 8px 1px 1px 1px;
 }	
 
 .summary-container {
