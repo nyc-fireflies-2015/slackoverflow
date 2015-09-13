@@ -1,0 +1,25 @@
+.container {
+	padding: 0em 10em 0em 10em;
+}
+
+.container h3 {
+	border-bottom: solid;
+	border-color: grey;
+	border-width: 1px;
+	padding-bottom: 2em;
+}
+
+#logo-img {
+	display: block;
+	width: 200px;
+	float: left;
+}
+
+#header-links {
+	text-align: right;
+}
+
+#ask-question-button {
+	padding-top: 40px;
+	text-align: right;
+}
