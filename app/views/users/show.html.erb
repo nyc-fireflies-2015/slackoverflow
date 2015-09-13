@@ -13,8 +13,21 @@
 	<div id="user-answers-list">
 		<% @user.comments.each do |comment| %>
 			<% if comment.is_answer == true %>
-				<li><%= link_to comment.body, comment_path(comment) %></li>
+				<li><%= link_to comment.body, question_path(comment.commentable) %></li>
 			<% end %>
+		<% end %>
+	</div>
+</div>
+
+<div class="profile-column">
+	<h3>Your Comments</h3>
+	<div id="user-comments-list">
+		<% @user.comments.each do |comment| %>
+			<% if comment.commentable_type == "Comment" %>
+				<li><%= link_to comment.body, question_path(Comment.find(comment.commentable).commentable) %></li>
+			<%else%>
+				<li><%= link_to comment.body, question_path(comment.commentable) %></li>
+			<%end%>
 		<% end %>
 	</div>
 </div>
