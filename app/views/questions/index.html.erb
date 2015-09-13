@@ -1,3 +1,16 @@
-<% @questions.each do |question| %>
-  <%= link_to question.title, question_path(question) %>
-<% end %>
+<div class="container">
+	<h3>All Questions</h3>
+	<div>---------------------------------------------------</div>
+	<div id="questions-list">
+		<% @questions.each do |question| %>
+			<li>
+				<div><%= pluralize(question.votes.count, "vote") %></div>
+				<div><%= pluralize(question.answers.count, "answer") %></div>
+				<p><%= link_to question.title, question_path(question) %></p>
+				<p><%= question.body %></p>
+				<div>asked by <%= question.author.username %> on <%= question.created_at.strftime('%c') %></div>
+				<div>---------------------------------------------------</div>
+			</li>
+		<% end %>
+	</div>
+</div>
