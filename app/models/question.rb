@@ -18,4 +18,8 @@ class Question < ActiveRecord::Base
     self.tags.map(&:name).join(", ")
   end
 
+  def answers
+    self.comments.map{ |comment| comment.is_answer == true }
+  end
+
 end
