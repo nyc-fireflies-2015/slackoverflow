@@ -3,12 +3,14 @@
 </div>
 
 <div id="question_body">
-  <p><%= @question.body %></p>
+  <p><input class="upvote-question" type='button' name='<%= @question.id %>, <%= current_user.id %>' value="Upvote" /><%= @question.body %></p>
 </div>
 
 <div>
   Posted by <%= link_to @question.author.username, user_path(@question.author) %>
 </div>
+
+<h2>Comments</h2>
 
 <div id="new_comment">
   <% if current_user %>
