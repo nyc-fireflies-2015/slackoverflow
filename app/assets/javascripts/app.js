@@ -4,7 +4,11 @@ $( document ).ready(function() {
     // debugger
     $.ajax({
       url: "/questions/" + clickTarget.name + "/vote",
-      method: "post"
+      method: "post",
+      data: {vote: {
+        value: clickTarget.value,
+        voteable_type: "question",
+
     }).done(function(response) {
       console.log("yay, here's the response", response)
     }).fail(function(err) {
