@@ -1,15 +1,16 @@
 class VotesController < ApplicationController
 
   def create
+    binding.pry
     vote = Vote.new(vote_params)
     if vote.save!
       if vote.voteable_type == 'comment'
-        redirect_to comment_path(id: voteable_id)
+        return vote.comment.votes.count.to_s
       else
-        redirect_to question_path(id: voteable_id)
+        return vote.comment.votes.count.to_s
       end
     else
-      redirect_to(:root)
+      redirect_to question_path(id: voteable_id)
     end
   end
 
