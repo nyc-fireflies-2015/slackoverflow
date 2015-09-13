@@ -1,0 +1,39 @@
+#questions-list ul {
+	list-style: none;
+}
+
+.question-summary {
+
+}
+
+.stats-container {
+	display: block;
+	width: 60px;
+	float: left;
+	padding-right: 10px;
+}
+
+.vote-box {
+	background-color: yellow;
+	height: 60px;
+	text-align: center;
+}
+
+.answer-box {
+	background-color: green;
+	height: 60px;
+	text-align: center;
+}	
+
+.summary-container {
+	display: block;
+	height: 120px;
+}
+
+.tag-list {
+
+}
+
+.author {
+	color: grey;
+}
