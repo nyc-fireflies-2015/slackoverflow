@@ -18,6 +18,13 @@ class CommentsController < ApplicationController
   def show
   end
 
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update_attributes(comments_params)
+    @question = @comment.commentable
+    redirect_to @question
+  end
+
   private
   def comments_params
     params.require(:comment).permit(:body, :commenter_id, :is_answer, :commentable_type, :commentable_id)

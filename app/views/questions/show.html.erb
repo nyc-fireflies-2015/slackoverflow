@@ -29,49 +29,39 @@
   Posted by <%= link_to @question.author.username, user_path(@question.author) %>
 </div>
 
-<h2>Comments</h2>
+<hr>
 
-<div id="new_comment">
-  <%= link_to 'add comment', new_question_comment_path(@question, commentable: {commentable_type: @question.class.to_s, commentable_id: @question.id}) %>
+
+<div class="box">
+  <h2>Answers</h2>
+
+  <hr>
+
+  <div id="answers_stream">
+    <% @comments.each do |comment| %>
+      <% if comment.is_answer %>
+        <%= render partial: 'comments/comments_list', locals: {comment: comment} %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 <hr>
 
-<div id="comments_stream">
-  <% @comments.each do |comment| %>
-    <p><%=comment.body%></p>
-    <p>posted by <%= link_to comment.commenter.username, user_path(comment.commenter) %></p>
-    <%= form_for @upvote do %>
-      <%= hidden_field_tag(:voter_id, current_user.id) %>
-      <%= hidden_field_tag(:voteable_type, "Comment") %>
-      <%= hidden_field_tag(:voteable_id, comment.id) %>
-      <%= hidden_field_tag(:value,"1") %>
-      <%= submit_tag("Up") %>
-    <% end %>
+<div class="box">
+  <h2>Comments</h2>
 
-    <%= form_for @downvote do %>
-      <%= hidden_field_tag(:voter_id, current_user.id) %>
-      <%= hidden_field_tag(:voteable_type, "Comment") %>
-      <%= hidden_field_tag(:voteable_id, comment.id) %>
-      <%= hidden_field_tag(:value,"-1") %>
-      <%= submit_tag("Down") %>
-    <% end %>
+  <div id="new_comment">
+    <%= link_to 'add comment', new_question_comment_path(@question, commentable: {commentable_type: @question.class.to_s, commentable_id: @question.id}) %>
+  </div>
 
-    <%= comment.vote_total %>
+  <hr>
 
-    <ul>
-      <%comment.comments.each do |sub_comment|%>
-        <li><%=sub_comment.body%> posted by <%= link_to sub_comment.commenter.username, user_path(sub_comment.commenter) %></li>
-      <%end%>
-    </ul>
-
-    <div id="new_comment">
-      <% if current_user %>
-      <%= link_to 'add reply', new_comment_comment_path(comment, commentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
+  <div id="comments_stream">
+    <% @comments.each do |comment| %>
+      <% if !comment.is_answer %>
+        <%= render partial: 'comments/comments_list', locals: {comment: comment} %>
       <% end %>
-    </div>
-
-    <hr>
-
-  <% end %>
+    <% end %>
+  </div>
 </div>
