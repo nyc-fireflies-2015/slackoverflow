@@ -3,12 +3,15 @@ $( document ).ready(function() {
     var clickTarget = e.target;
     // debugger
     $.ajax({
-      url: "/questions/" + clickTarget.name + "/vote",
+      url: "/questions/" + clickTarget.name[0] + "/vote",
       method: "post",
       data: {vote: {
         value: clickTarget.value,
         voteable_type: "question",
-
+        voteable_id: clickTarget.name[0],
+        voter_id: clickTarget.name[3]
+        }
+      }
     }).done(function(response) {
       console.log("yay, here's the response", response)
     }).fail(function(err) {
