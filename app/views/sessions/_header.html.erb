@@ -1,9 +1,17 @@
-<%= link_to 'Slack Overflow', root_path %>
-<% if current_user %>
-  <%= link_to 'logout', logout_path %>
-  <%= link_to 'profile', user_path(current_user) %>
-<% else %>
-  <%= link_to 'signup', signup_path %>
-  <%= link_to 'login', login_path %>
-<% end %>
-<%= link_to "Ask a question", question_path(:new) %>
+<div class="container">
+	<div id="logo-img">
+		<%= link_to 'Slack Overflow', root_path %>
+	</div>
+	<div id="header-links">
+		<% if current_user %>
+		  <%= link_to 'logout', logout_path %>
+		  <%= link_to 'profile', user_path(current_user) %>
+		<% else %>
+		  <%= link_to 'signup', signup_path %>
+		  <%= link_to 'login', login_path %>
+		<% end %>
+	</div>
+	<div id="ask-question-button">
+		<%= link_to "Ask a question", question_path(:new) %>
+	</div>
+</div>
