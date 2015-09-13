@@ -3,7 +3,7 @@
 </div>
 
 <div id="question_body">
-  <p><input class="upvote-question" type='button' name='<%= @question.id %>, <%= current_user.id %>' value="Upvote" /><%= @question.body %></p>
+  <p><input class="upvote-question" type='button' name='<%= @question.id %>, <%= current_user.id %>' value="Upvote" /><%= render "vote", locals: { question: @question } %> <%= @question.body %></p>
 </div>
 
 <div>
