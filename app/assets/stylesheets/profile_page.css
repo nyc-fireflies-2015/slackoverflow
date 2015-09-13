@@ -5,3 +5,7 @@
 .profile-column {
 	padding-bottom: 2em;
 }
+
+.profile-column li {
+	list-style: none;
+}
