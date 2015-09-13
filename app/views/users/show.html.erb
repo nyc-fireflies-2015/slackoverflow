@@ -1,1 +1,27 @@
 <%= @user.username %>
+<div class="profile-column">
+	<h3>Your Questions</h3>
+	<div id="user-questions-list">
+		<% @user.questions.each do |question| %>
+			<%= question.title %>
+		<% end %>
+	</div>
+</div>
+
+<div class="profile-column">
+	<h3>Your Answers</h3>
+	<div id="user-answers-list">
+		<% @user.comments.each do |comment| %>
+			<% if comment.is_answer == true %>
+				<%= comment.body %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+<div class="profile-column">
+	<h3>Your Votes</h3>
+	<div id="user-votes-list">
+		
+	</div>
+</div>
