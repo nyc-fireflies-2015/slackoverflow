@@ -1,14 +1,11 @@
 class VotesController < ApplicationController
 
   def create
-    binding.pry
-    vote = Vote.new(vote_params)
-    if vote.save!
-      if vote.voteable_type == 'comment'
-        return vote.comment.votes.count.to_s
-      else
-        return vote.comment.votes.count.to_s
-      end
+    vote = Vote.create(vote_params)
+    if request.xhr?
+      # binding.pry
+      # vote.voteable.votes.count.to_s
+      # render :template => "app/views/questions/vote"
     else
       redirect_to question_path(id: voteable_id)
     end
