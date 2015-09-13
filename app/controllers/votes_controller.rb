@@ -5,7 +5,7 @@ class VotesController < ApplicationController
     if request.xhr?
       # binding.pry
       # vote.voteable.votes.count.to_s
-      # render :template => "app/views/questions/vote"
+      # render :template => "questions/vote"
     else
       redirect_to question_path(id: voteable_id)
     end
