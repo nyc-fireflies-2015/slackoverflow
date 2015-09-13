@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @comments = @question.comments
+    @comments = @question.comments.sort{|x,y| y.vote_total <=> x.vote_total}
     @upvote = Vote.new
     @downvote = Vote.new
   end
