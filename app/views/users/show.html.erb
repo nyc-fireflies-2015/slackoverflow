@@ -1,40 +1,42 @@
-<%= @user.username %>
-<div class="profile-column">
-	<h3>Your Questions</h3>
-	<div id="user-questions-list">
-		<% @user.questions.each do |question| %>
-			<li><%= link_to question.title, question_path(question) %></li>
-		<% end %>
-	</div>
-</div>
-
-<div class="profile-column">
-	<h3>Your Answers</h3>
-	<div id="user-answers-list">
-		<% @user.comments.each do |comment| %>
-			<% if comment.is_answer == true %>
-				<li><%= link_to comment.body, question_path(comment.commentable) %></li>
+<div class="container">
+	<h1>Hi, <%= @user.username %>!</h1>
+	<div class="profile-column">
+		<h3>Your Questions (<%= @user.questions.count %>)</h3>
+		<div id="user-questions-list">
+			<% @user.questions.each do |question| %>
+				<li><%= link_to question.title, question_path(question) %></li>
 			<% end %>
-		<% end %>
+		</div>
 	</div>
-</div>
 
-<div class="profile-column">
-	<h3>Your Comments</h3>
-	<div id="user-comments-list">
-		<% @user.comments.each do |comment| %>
-			<% if comment.commentable_type == "Comment" %>
-				<li><%= link_to comment.body, question_path(Comment.find(comment.commentable).commentable) %></li>
-			<%else%>
-				<li><%= link_to comment.body, question_path(comment.commentable) %></li>
-			<%end%>
-		<% end %>
+	<div class="profile-column">
+		<h3>Your Answers (<%= @user.comments.select(&:is_answer).count %>)</h3>
+		<div id="user-answers-list">
+			<% @user.comments.each do |comment| %>
+				<% if comment.is_answer == true %>
+					<li><%= link_to comment.body, question_path(comment.commentable) %></li>
+				<% end %>
+			<% end %>
+		</div>
 	</div>
-</div>
 
-<div class="profile-column">
-	<h3>Your Votes</h3>
-	<div id="user-votes-list">
-		<li></li>
+	<div class="profile-column">
+		<h3>Your Comments (<%= @user.comments.count %>)</h3>
+		<div id="user-comments-list">
+			<% @user.comments.each do |comment| %>
+				<% if comment.commentable_type == "Comment" %>
+					<li><%= link_to comment.body, question_path(Comment.find(comment.commentable).commentable) %></li>
+				<%else%>
+					<li><%= link_to comment.body, question_path(comment.commentable) %></li>
+				<%end%>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="profile-column">
+		<h3>Your Votes</h3>
+		<div id="user-votes-list">
+			<li></li>
+		</div>
 	</div>
 </div>
