@@ -6,9 +6,30 @@
   <p><%= @question.body %></p>
 </div>
 
+<%= form_for @upvote do %>
+  <%= hidden_field_tag(:voter_id, current_user.id) %>
+  <%= hidden_field_tag(:voteable_type, "Question") %>
+  <%= hidden_field_tag(:voteable_id, @question.id) %>
+  <%= hidden_field_tag(:value,"1") %>
+  <%= submit_tag("Up") %>
+<% end %>
+
+<%= form_for @downvote do %>
+  <%= hidden_field_tag(:voter_id, current_user.id) %>
+  <%= hidden_field_tag(:voteable_type, "Question") %>
+  <%= hidden_field_tag(:voteable_id, @question.id) %>
+  <%= hidden_field_tag(:value,"-1") %>
+  <%= submit_tag("Down") %>
+<% end %>
+
+<%= @question.vote_total %>
+
+
 <div>
   Posted by <%= link_to @question.author.username, user_path(@question.author) %>
 </div>
+
+<h2>Comments</h2>
 
 <div id="new_comment">
   <%= link_to 'add comment', new_question_comment_path(@question, commentable: {commentable_type: @question.class.to_s, commentable_id: @question.id}) %>
@@ -20,6 +41,23 @@
   <% @comments.each do |comment| %>
     <p><%=comment.body%></p>
     <p>posted by <%= link_to comment.commenter.username, user_path(comment.commenter) %></p>
+    <%= form_for @upvote do %>
+      <%= hidden_field_tag(:voter_id, current_user.id) %>
+      <%= hidden_field_tag(:voteable_type, "Comment") %>
+      <%= hidden_field_tag(:voteable_id, comment.id) %>
+      <%= hidden_field_tag(:value,"1") %>
+      <%= submit_tag("Up") %>
+    <% end %>
+
+    <%= form_for @downvote do %>
+      <%= hidden_field_tag(:voter_id, current_user.id) %>
+      <%= hidden_field_tag(:voteable_type, "Comment") %>
+      <%= hidden_field_tag(:voteable_id, comment.id) %>
+      <%= hidden_field_tag(:value,"-1") %>
+      <%= submit_tag("Down") %>
+    <% end %>
+
+    <%= comment.vote_total %>
 
     <ul>
       <%comment.comments.each do |sub_comment|%>
@@ -29,7 +67,7 @@
 
     <div id="new_comment">
       <% if current_user %>
-      <%= link_to 'add comment', new_comment_comment_path(comment, commentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
+      <%= link_to 'add reply', new_comment_comment_path(comment, commentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
       <% end %>
     </div>
 

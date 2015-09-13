@@ -16,4 +16,11 @@ FactoryGirl.define do
   factory :comment do
     body Faker::Hacker.say_something_smart
   end
+
+# Need to sort out this polymorphism association in factory to get tests to pass
+  factory :vote do
+    value 1
+    user
+    comment
+  end
 end
