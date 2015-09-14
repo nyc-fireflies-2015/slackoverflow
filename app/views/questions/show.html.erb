@@ -1,0 +1,61 @@
+<div class="question-summary">
+  <div class="stats-container">
+    <% if logged_in? && !@question.user_already_voted?(current_user) %>
+      <%= render partial: 'votes/question_upvote', locals: {question: @question} %>
+      <%= @question.vote_total %>
+      <%= render partial: 'votes/question_downvote', locals: {question: @question} %>
+    <% else %>
+      <div><%= submit_tag("Up") %></div>
+      <div><%= @question.vote_total %></div>
+      <div><%= submit_tag("Down") %></div>
+    <% end %>
+  </div>
+
+  <div class="summary-container">
+    <div id="question_title">
+      <h2><%= @question.title %></h2>
+    </div>
+
+    <div id="question_body">
+      <p><%= @question.body %></p>
+    </div>
+
+    <div>
+      Posted by <%= link_to @question.author.username, user_path(@question.author) %>
+    </div>
+  </div>
+</div>
+
+<div class="box">
+  <h2>Answers</h2>
+
+  <hr>
+
+  <div id="answers_stream">
+    <% @comments.each do |comment| %>
+    <% if comment.is_answer %>
+    <%= render partial: 'comments/comments_list', locals: {comment: comment} %>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
+<div class="box">
+  <h2>Comments</h2>
+
+  <div id="new_comment">
+    <%= link_to 'add comment', new_question_comment_path(@question, commentable: {commentable_type: @question.class.to_s, commentable_id: @question.id}) %>
+  </div>
+
+  <hr>
+
+  <div id="comments_stream">
+    <% @comments.each do |comment| %>
+    <% if !comment.is_answer %>
+    <%= render partial: 'comments/comments_list', locals: {comment: comment} %>
+    <% end %>
+    <% end %>
+  </div>
+</div>

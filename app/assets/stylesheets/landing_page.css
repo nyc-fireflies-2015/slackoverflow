@@ -1,0 +1,50 @@
+#questions-list li {
+	list-style: none;
+}
+
+.question-summary {
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: grey;
+	padding-bottom: 10px;
+}
+
+.stats-container {
+	display: block;
+	width: 60px;
+	height: 120px;
+	float: left;
+	padding-right: 20px;
+	font-size: 16px;
+}
+
+.vote-box {
+	display: block;
+	height: 40px;
+	text-align: center;
+	font-size: 95%;
+	padding: 8px 1px 1px 1px;
+}
+
+.answer-box {
+	display: block;
+	background-color: #74845C;
+	height: 40px;
+	text-align: center;
+	font-size: 80%;
+	padding: 8px 1px 1px 1px;
+}
+
+.summary-container {
+	display: block;
+	height: 120px;
+}
+
+.tag-list {
+
+}
+
+.author {
+	color: grey;
+	font-size: 14px;
+}

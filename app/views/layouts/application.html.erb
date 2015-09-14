@@ -3,12 +3,17 @@
 <head>
   <title>Slackoverflow</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+	<header>
+	  <%= render partial: 'sessions/header' %>
+	</header>
 <body>
-
-<%= yield %>
-
+<div class="container">
+  <%= render partial: 'layouts/question_header' %>
+	<%= yield %>
+</div>
 </body>
 </html>

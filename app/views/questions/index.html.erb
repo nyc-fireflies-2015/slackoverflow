@@ -1,0 +1,21 @@
+<div>
+	<h3>All Questions</h3>
+	<div id="questions-list">
+		<% @questions.each do |question| %>
+		<li>
+			<div class="question-summary">
+				<div class="stats-container">
+					<div class="vote-box"><%= question.vote_total %> points</div>
+					<div class="answer-box"><%= pluralize(question.answers.count, "answer") %></div>
+				</div>
+				<div class="summary-container">
+					<p><%= link_to question.title, question_path(question) %></p>
+					<p><%= question.body %></p>
+					<div class="tag-list">Tags: <%= question.all_tags %></div>
+					<div class="author">asked by <%= question.author.username %> on <%= question.created_at.strftime('%c') %></div>
+				</div>
+			</div>
+		</li>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+.profile-column h3 {
+	padding-bottom: 10px;
+}
+
+.profile-column {
+	padding-bottom: 2em;
+}
+
+.profile-column li {
+	list-style: none;
+}

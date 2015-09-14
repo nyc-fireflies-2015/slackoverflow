@@ -1,0 +1,7 @@
+<%= form_for @downvote do %>
+  <%= hidden_field_tag(:voter_id, current_user.id) %>
+  <%= hidden_field_tag(:voteable_type, "Question") %>
+  <%= hidden_field_tag(:voteable_id, question.id) %>
+  <%= hidden_field_tag(:value,"-1") %>
+  <%= submit_tag("Down") %>
+<% end %>
