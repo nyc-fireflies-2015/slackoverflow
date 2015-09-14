@@ -25,15 +25,16 @@
     <%= link_to 'add reply', new_comment_comment_path(comment, commentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
     <% end %>
   </div>
-</div>
 
-<div id="answer-box">
-  <% if current_user && @question.author == current_user %>
-  <%= form_for comment do |f| %>
-  <%= form_tag(comment_path, method: "patch") %>
-  <%= f.label('mark as answer') %>
-  <%= f.check_box(:is_answer) %>
-  <%= f.submit 'submit' %>
-  <% end %>
-  <% end %>
+  <div id="answer-box">
+    <% if current_user && @question.author == current_user %>
+    <%= form_for comment do |f| %>
+    <%= form_tag(comment_path, method: "patch") %>
+    <%= f.label('mark as answer') %>
+    <%= f.check_box(:is_answer) %>
+    <%= f.submit 'submit' %>
+    <% end %>
+    <% end %>
+  </div>
+
 </div>
