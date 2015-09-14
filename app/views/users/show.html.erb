@@ -41,7 +41,7 @@
 				<% if vote.voteable_type == "Question" %>
 				<%= link_to vote.voteable.title, question_path(vote.voteable) %>
 				<% else %>
-				<%= link_to vote.voteable.body, comment_path(vote.voteable) %>
+				<%= link_to vote.voteable.body,  question_path(Comment.find(vote.voteable).commentable) %>
 				<% end %>
 			</li>
 			<% end %>
