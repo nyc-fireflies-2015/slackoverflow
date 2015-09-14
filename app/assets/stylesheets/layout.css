@@ -1,12 +1,19 @@
 html {
 	padding: 0px;
 	margin: 0px;
+	font-family: 'Open Sans', sans-serif;
 }
 
 header {
 	background-color: #232323;
 	padding: 1em;
 	margin: -1em ;
+}
+
+header a:visited {
+	color:#ffffff;
+	text-decoration: none;
+
 }
 
 .container {
@@ -26,13 +33,13 @@ header {
 	float: left;
 }
 
-#header-links {
+#header-links{
 	text-align: right;
 	color: #ffffff;
 }
 
 
-#header-links visited {
+#header-links  {
 	text-align: right;
 	color: #ffffff;
 }

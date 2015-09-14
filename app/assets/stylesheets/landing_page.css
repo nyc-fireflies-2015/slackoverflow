@@ -22,16 +22,18 @@
 	display: block;
 	height: 40px;
 	text-align: center;
+	font-size: 95%;
 	padding: 8px 1px 1px 1px;
 }
 
 .answer-box {
 	display: block;
-	background-color: green;
+	background-color: #74845C;
 	height: 40px;
 	text-align: center;
+	font-size: 80%;
 	padding: 8px 1px 1px 1px;
-}	
+}
 
 .summary-container {
 	display: block;
