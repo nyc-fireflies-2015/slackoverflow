@@ -36,7 +36,26 @@
 	<div class="profile-column">
 		<h3>Your Votes (<%= @user.votes.count %>)</h3>
 		<div id="user-votes-list">
-			<li></li>
+			<% @user.votes.each do |vote| %>
+				<li>
+					<% if vote.voteable_type == "Question" %>
+						<%= link_to vote.voteable.title, question_path(vote.voteable) %>
+					<% else %>	
+						<%= link_to vote.voteable.body, comment_path(vote.voteable) %>
+					<% end %>	
+				</li>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="profile-column">
+		<h3>Your Tags</h3>
+		<div id="user-votes-list">
+			<% @user.questions.each do |question| %>
+				<% question.tags.each do |tag| %>
+					<li><%= link_to tag.name, questions_path %></li>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>
