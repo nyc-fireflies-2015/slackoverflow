@@ -1,8 +1,8 @@
 <p><%=comment.body%></p>
 <p>posted by <%= link_to comment.commenter.username, user_path(comment.commenter) %></p>
 <% if logged_in? %>
-<%= render partial: 'votes/comment_upvote' %>
-<%= render partial: 'votes/commentdownvote' %>
+<%= render partial: 'votes/comment_upvote', locals: {comment: comment} %>
+<%= render partial: 'votes/comment_downvote', locals: {comment: comment} %>
 <% end %>
 
 <%= comment.vote_total %>

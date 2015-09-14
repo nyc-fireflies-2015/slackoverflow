@@ -8,8 +8,8 @@
 
 
 <% if logged_in? %>
-<%= render partial: 'votes/question_upvote' %>
-<%= render partial: 'votes/question_downvote' %>
+<%= render partial: 'votes/question_upvote', locals: {question: @question} %>
+<%= render partial: 'votes/question_downvote', locals: {question: @question} %>
 <% end %>
 <%= @question.vote_total %>
 
