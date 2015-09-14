@@ -10,7 +10,7 @@ describe Comment do
   it 'should be invalid without a body' do
     comment = Comment.new(body: nil,commenter_id: 5)
     comment.valid?
-    expect(comment.errors[:body]).not_to include("can't be blank")
+    expect(comment.errors[:body]).to include("can't be blank")
   end
 
   it 'should be invalid without a commenter' do
