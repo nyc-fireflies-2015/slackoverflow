@@ -1,0 +1,15 @@
+.comment-container {
+	display: block;
+	width: 60px;
+	height: 120px;
+	float: left;
+	padding-right: 20px;
+	font-size: 16px;
+}
+
+.comment-summary {
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: grey;
+	padding-bottom: 10px;
+}
