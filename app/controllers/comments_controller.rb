@@ -2,21 +2,21 @@ class CommentsController < ApplicationController
   before_action :require_login
 
   def new
-    @comment = Comment.new(commentable_id: params[:commentable][:commentable_id], commentable_type: params[:commentable][:commentable_type])
+    @comment = Comment.new()
   end
 
   def create
-    comment = Comment.new(comments_params)
+    comment = Comment.new(comments_params).merge(commentable_id: params[:commentable][:commentable_id], commentable_type: params[:commentable][:commentable_type])
     if comment.save
       if comment.commentable_type == "Question"
         redirect_to question_path(id: comment.commentable_id)
       else
         redirect_to question_path(Comment.find(comment.commentable).commentable)
       end
+    else
+      error_message = "ERROR: your comment wasn't saved"
+      render error_message
     end
-  end
-
-  def show
   end
 
   def update

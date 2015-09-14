@@ -1,22 +1,25 @@
 <%= form_for @question do |q| %>
-
+<div>
   <%= q.label :title %>
   <%= q.text_field :title %>
-  <br>
+</div>
+<div>
   <%= q.label :body %>
   <%= q.text_area :body %>
-
+</div>
+<div>
   <%= q.text_field :all_tags%>
   <%= q.label "Tags separated with comma" %>
-  <%= q.submit %>
+</div>
+<%= q.submit %>
 
 <% end %>
 
 <br>
 <div>
   <% if @question.errors.any? %>
-      <% @question.errors.full_messages.each do |msg| %>
-        <%= msg %>
-      <% end %>
+  <% @question.errors.full_messages.each do |msg| %>
+  <%= msg %>
+  <% end %>
   <% end %>
 </div>

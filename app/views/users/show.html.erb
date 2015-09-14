@@ -4,7 +4,7 @@
 		<h3>Your Questions (<%= @user.questions.count %>)</h3>
 		<div id="user-questions-list">
 			<% @user.questions.each do |question| %>
-				<li><%= question.votes.count %> | <%= link_to question.title, question_path(question) %></li>
+			<li><%= question.votes.count %> | <%= link_to question.title, question_path(question) %></li>
 			<% end %>
 		</div>
 	</div>
@@ -13,9 +13,9 @@
 		<h3>Your Answers (<%= @user.comments.select(&:is_answer).count %>)</h3>
 		<div id="user-answers-list">
 			<% @user.comments.each do |comment| %>
-				<% if comment.is_answer == true %>
-					<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(comment.commentable) %></li>
-				<% end %>
+			<% if comment.is_answer == true %>
+			<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(comment.commentable) %></li>
+			<% end %>
 			<% end %>
 		</div>
 	</div>
@@ -24,11 +24,11 @@
 		<h3>Your Comments (<%= @user.comments.count %>)</h3>
 		<div id="user-comments-list">
 			<% @user.comments.each do |comment| %>
-				<% if comment.commentable_type == "Comment" %>
-					<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(Comment.find(comment.commentable).commentable) %></li>
-				<%else%>
-					<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(comment.commentable) %></li>
-				<%end%>
+			<% if comment.commentable_type == "Comment" %>
+			<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(Comment.find(comment.commentable).commentable) %></li>
+			<%else%>
+			<li><%= comment.votes.count %> | <%= link_to comment.body, question_path(comment.commentable) %></li>
+			<%end%>
 			<% end %>
 		</div>
 	</div>
@@ -37,13 +37,13 @@
 		<h3>Your Votes (<%= @user.votes.count %>)</h3>
 		<div id="user-votes-list">
 			<% @user.votes.each do |vote| %>
-				<li>
-					<% if vote.voteable_type == "Question" %>
-						<%= link_to vote.voteable.title, question_path(vote.voteable) %>
-					<% else %>
-						<%= link_to vote.voteable.body, question_path(Comment.find(vote.voteable).commentable) %>
-					<% end %>
-				</li>
+			<li>
+				<% if vote.voteable_type == "Question" %>
+				<%= link_to vote.voteable.title, question_path(vote.voteable) %>
+				<% else %>
+				<%= link_to vote.voteable.body, comment_path(vote.voteable) %>
+				<% end %>
+			</li>
 			<% end %>
 		</div>
 	</div>
@@ -52,9 +52,9 @@
 		<h3>Your Tags</h3>
 		<div id="user-votes-list">
 			<% @user.questions.each do |question| %>
-				<% question.tags.each do |tag| %>
-					<li><%= link_to tag.name, questions_path %></li>
-				<% end %>
+			<% question.tags.each do |tag| %>
+			<li><%= link_to tag.name, questions_path %></li>
+			<% end %>
 			<% end %>
 		</div>
 	</div>
