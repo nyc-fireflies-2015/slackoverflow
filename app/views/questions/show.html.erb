@@ -1,9 +1,12 @@
 <div class="question-summary">  
   <div class="stats-container">
-    <% if logged_in? %>
+    <% if logged_in? && !@question.user_already_voted?(current_user) %>
       <%= render partial: 'votes/question_upvote', locals: {question: @question} %>
       <%= @question.vote_total %>
       <%= render partial: 'votes/question_downvote', locals: {question: @question} %>
+    <% else %>
+      <p>Votes</p>
+      <%= @question.vote_total %>
     <% end %>
   </div>
 

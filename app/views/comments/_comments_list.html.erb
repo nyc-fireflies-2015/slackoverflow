@@ -1,8 +1,11 @@
 <div class="stats-container">
-  <% if logged_in? %>
+  <% if logged_in? && !comment.user_already_voted?(current_user) %>
     <%= render partial: 'votes/comment_upvote', locals: {comment: comment} %>
     <%= comment.vote_total %>
     <%= render partial: 'votes/comment_downvote', locals: {comment: comment} %>
+  <% else %>
+    <p>Votes</p>
+    <%= comment.vote_total %>
   <% end %>
 </div>
 
