@@ -28,4 +28,8 @@ class Question < ActiveRecord::Base
     total
   end
 
+  def user_already_voted?(user)
+    self.votes.map(&:voter_id).include?(user.id)
+  end
+
 end

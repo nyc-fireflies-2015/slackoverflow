@@ -11,4 +11,8 @@ class Comment < ActiveRecord::Base
     self.votes.each{|vote| total += vote.value}
     total
   end
+
+  def user_already_voted?(user)
+    self.votes.map(&:voter_id).include?(user.id)
+  end
 end
