@@ -10,6 +10,3 @@ user_3 = User.create(username:"moe",password:"1234")
 		comment = question.comments.create(body: Faker::Hacker.say_something_smart,commenter_id: 2)
 	end
 end
-
-# comment_1 = question.comments.create(body:"test",commenter_id: 2)
-# comment_2 = comment_1.comments.create(body:"test",commenter_id: 3)

@@ -31,9 +31,9 @@
 
   <div id="answers_stream">
     <% @comments.each do |comment| %>
-      <% if comment.is_answer %>
-        <%= render partial: 'comments/comments_list', locals: {comment: comment} %>
-      <% end %>
+    <% if comment.is_answer %>
+    <%= render partial: 'comments/comments_list', locals: {comment: comment} %>
+    <% end %>
     <% end %>
   </div>
 </div>
@@ -51,9 +51,9 @@
 
   <div id="comments_stream">
     <% @comments.each do |comment| %>
-      <% if !comment.is_answer %>
-        <%= render partial: 'comments/comments_list', locals: {comment: comment} %>
-      <% end %>
+    <% if !comment.is_answer %>
+    <%= render partial: 'comments/comments_list', locals: {comment: comment} %>
+    <% end %>
     <% end %>
   </div>
 </div>
