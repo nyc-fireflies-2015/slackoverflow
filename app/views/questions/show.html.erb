@@ -1,16 +1,17 @@
-<div class="question-summary">  
+<div class="question-summary">
   <div class="stats-container">
     <% if logged_in? && !@question.user_already_voted?(current_user) %>
       <%= render partial: 'votes/question_upvote', locals: {question: @question} %>
       <%= @question.vote_total %>
       <%= render partial: 'votes/question_downvote', locals: {question: @question} %>
     <% else %>
-      <p>Votes</p>
-      <%= @question.vote_total %>
+      <div><%= submit_tag("Up") %></div>
+      <div><%= @question.vote_total %></div>
+      <div><%= submit_tag("Down") %></div>
     <% end %>
   </div>
 
-  <div class="question-summary">
+  <div class="summary-container">
     <div id="question_title">
       <h2><%= @question.title %></h2>
     </div>
@@ -18,14 +19,12 @@
     <div id="question_body">
       <p><%= @question.body %></p>
     </div>
+
     <div>
       Posted by <%= link_to @question.author.username, user_path(@question.author) %>
     </div>
   </div>
-
 </div>
-
-
 
 <div class="box">
   <h2>Answers</h2>
