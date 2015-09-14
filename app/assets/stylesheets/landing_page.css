@@ -22,6 +22,7 @@
 	display: block;
 	height: 40px;
 	text-align: center;
+	font-size: 95%;
 	padding: 8px 1px 1px 1px;
 }
 
@@ -30,7 +31,7 @@
 	background-color: #74845C;
 	height: 40px;
 	text-align: center;
-	lin
+	font-size: 80%;
 	padding: 8px 1px 1px 1px;
 }
 
