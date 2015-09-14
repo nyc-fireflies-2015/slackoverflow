@@ -1,24 +1,27 @@
-<div id="question_title">
-  <h2><%= @question.title %></h2>
+<div class="question-summary">  
+  <div class="stats-container">
+    <% if logged_in? %>
+      <%= render partial: 'votes/question_upvote', locals: {question: @question} %>
+      <%= @question.vote_total %>
+      <%= render partial: 'votes/question_downvote', locals: {question: @question} %>
+    <% end %>
+  </div>
+
+  <div class="question-summary">
+    <div id="question_title">
+      <h2><%= @question.title %></h2>
+    </div>
+
+    <div id="question_body">
+      <p><%= @question.body %></p>
+    </div>
+    <div>
+      Posted by <%= link_to @question.author.username, user_path(@question.author) %>
+    </div>
+  </div>
+
 </div>
 
-<div id="question_body">
-  <p><%= @question.body %></p>
-</div>
-
-
-<% if logged_in? %>
-<%= render partial: 'votes/question_upvote', locals: {question: @question} %>
-<%= render partial: 'votes/question_downvote', locals: {question: @question} %>
-<% end %>
-<%= @question.vote_total %>
-
-
-<div>
-  Posted by <%= link_to @question.author.username, user_path(@question.author) %>
-</div>
-
-<hr>
 
 
 <div class="box">
