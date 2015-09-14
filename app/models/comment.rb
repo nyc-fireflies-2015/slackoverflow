@@ -4,6 +4,8 @@ class Comment < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :voteable
 
+   validates :body, presence: true
+
   def vote_total
     total = 0
     self.votes.each{|vote| total += vote.value}
