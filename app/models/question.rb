@@ -19,7 +19,7 @@ class Question < ActiveRecord::Base
   end
 
   def answers
-    self.comments.map{ |comment| comment.is_answer == true }
+    self.comments.select{ |comment| comment.is_answer == true }
   end
 
   def vote_total
