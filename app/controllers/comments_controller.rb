@@ -8,10 +8,11 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(comments_params)
     if comment.save
-      redirect_to root_path
-    else
-      error_message = "ERROR: your comment wasn't saved"
-      render error_message
+      if comment.commentable_type == "Question"
+        redirect_to question_path(id: comment.commentable_id)
+      else
+        redirect_to question_path(Comment.find(comment.commentable).commentable)
+      end
     end
   end
 
