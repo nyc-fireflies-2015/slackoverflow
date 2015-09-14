@@ -1,3 +1,14 @@
+html {
+	padding: 0px;
+	margin: 0px;
+}
+
+header {
+	background-color: #232323;
+	padding: 1em;
+	margin: -1em ;
+}
+
 .container {
 	padding: 0em 10em 0em 10em;
 }
@@ -17,6 +28,13 @@
 
 #header-links {
 	text-align: right;
+	color: #ffffff;
+}
+
+
+#header-links visited {
+	text-align: right;
+	color: #ffffff;
 }
 
 #ask-question-button {
