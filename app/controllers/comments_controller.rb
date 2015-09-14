@@ -2,11 +2,11 @@ class CommentsController < ApplicationController
   before_action :require_login
 
   def new
-    @comment = Comment.new()
+    @comment = Comment.new(commentable_id: params[:commentable][:commentable_id], commentable_type: params[:commentable][:commentable_type])
   end
 
   def create
-    comment = Comment.new(comments_params).merge(commentable_id: params[:commentable][:commentable_id], commentable_type: params[:commentable][:commentable_type])
+    comment = Comment.new(comments_params)
     if comment.save
       if comment.commentable_type == "Question"
         redirect_to question_path(id: comment.commentable_id)
