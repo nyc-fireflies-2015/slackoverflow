@@ -1,4 +1,3 @@
-
 <div class="stats-container">
   <% if logged_in? %>
     <%= render partial: 'votes/comment_upvote', locals: {comment: comment} %>
@@ -17,20 +16,28 @@
     <%end%>
   </ul>
 
-  <div id="new_comment">
-    <% if current_user %>
-    <%= link_to 'add reply', new_comment_comment_path(comment, commentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
-    <% end %>
-  </div>
 
-  <div id="answer-box">
-    <% if current_user && @question.author == current_user %>
-      <%= form_for comment do |f| %>
-        <%= form_tag(comment_path, method: "patch") %>
-        <%= f.label('mark as answer') %>
-        <%= f.check_box(:is_answer) %>
-        <%= f.submit 'submit' %>
-      <% end %>
-    <% end %>
-  </div>
+<%= comment.vote_total %>
+
+<ul>
+  <%comment.comments.each do |sub_comment|%>
+  <li><%=sub_comment.body%> posted by <%= link_to sub_comment.commenter.username, user_path(sub_comment.commenter) %></li>
+  <%end%>
+</ul>
+
+<div id="new_comment">
+  <% if current_user %>
+  <%= link_to 'add reply', new_comment_comment_path(comment, commentable: {commentable_type: comment.class.to_s, commentable_id: comment.id}) %>
+  <% end %>
+</div>
+
+<div id="answer-box">
+  <% if current_user && @question.author == current_user %>
+  <%= form_for comment do |f| %>
+  <%= form_tag(comment_path, method: "patch") %>
+  <%= f.label('mark as answer') %>
+  <%= f.check_box(:is_answer) %>
+  <%= f.submit 'submit' %>
+  <% end %>
+  <% end %>
 </div>
