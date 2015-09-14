@@ -17,8 +17,6 @@
   </ul>
 
 
-<%= comment.vote_total %>
-
 <ul>
   <%comment.comments.each do |sub_comment|%>
   <li><%=sub_comment.body%> posted by <%= link_to sub_comment.commenter.username, user_path(sub_comment.commenter) %></li>
